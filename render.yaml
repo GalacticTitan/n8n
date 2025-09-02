@@ -47,6 +47,18 @@ services:
         fromDatabase:
           name: n8n-db
           property: user
+          
+       # Critical for Render
+      - key: N8N_PORT
+        value: ${PORT}
+      - key: N8N_HOST
+        value: 0.0.0.0
+      - key: WEBHOOK_URL
+        value: https://${RENDER_EXTERNAL_HOSTNAME}/
+      - key: N8N_EDITOR_BASE_URL
+        value: https://${RENDER_EXTERNAL_HOSTNAME}/
+      - key: N8N_PUBLIC_API_DISABLED
+        value: "false"
 
 databases:
   - name: n8n-db
