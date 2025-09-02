@@ -47,7 +47,7 @@ services:
         fromDatabase:
           name: n8n-db
           property: user
-          
+
        # Critical for Render
       - key: N8N_PORT
         value: ${PORT}
@@ -59,6 +59,9 @@ services:
         value: https://${RENDER_EXTERNAL_HOSTNAME}/
       - key: N8N_PUBLIC_API_DISABLED
         value: "false"
+
+    # Force n8n to use Render's $PORT
+    startCommand: "n8n start --port $PORT --host 0.0.0.0"
 
 databases:
   - name: n8n-db
