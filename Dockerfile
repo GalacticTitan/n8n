@@ -13,11 +13,8 @@ USER root
 
 # Install Python, pip, and system tools
 RUN apk add --no-cache \
-    python3 \
-    py3-pip \
     youtube-dl \
-    ffmpeg \
-    && python3 -m pip install --no-cache-dir --break-system-packages trendspy
+    ffmpeg
 
 # Switch back to node user
 USER node
