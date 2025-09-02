@@ -1,3 +1,4 @@
+# Base n8n image
 FROM n8nio/n8n:latest
 
 ENV GENERIC_TIMEZONE="IN"
@@ -12,10 +13,10 @@ RUN apk add --no-cache \
     ffmpeg
 USER node
 
-# Ensure n8n binds to the correct host/port from Render
-ENV N8N_PORT=${PORT}
+# Render sets $PORT dynamically, no need for EXPOSE
+# Ensure n8n binds to it
+ENV N8N_PORT=$PORT
 ENV N8N_HOST=0.0.0.0
-ENV WEBHOOK_URL=https://${RENDER_EXTERNAL_HOSTNAME}/
 
 ENTRYPOINT ["n8n"]
 CMD []
